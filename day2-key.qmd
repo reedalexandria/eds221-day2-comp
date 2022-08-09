@@ -7,4 +7,50 @@ execute:
   message: false
 ---
 
-## 
+## Vectors
+
+```{r}
+# Create a vector
+dogs <- c("teddy", "khora", "waffle", "banjo", "tallie")
+
+#Check the class (can be done in console if you don't want this to show up)
+class(dogs)
+#character
+```
+
+```{r}
+cats <- c("creamsicle wolf", 14.2, 3L)
+
+class(cats)
+#character because character is most flexible
+```
+
+```{r}
+years <- c(20, 40, 16, 2)
+class(years)
+#numeric
+
+typeof(years)
+#double subtype of numeric
+```
+
+```{r}
+# Want to do a conditional check
+# is. <<< asks questions 'is this THIS"
+# as. <<< gives a command "makes this THIS"
+
+is.numeric(years)
+is.character(years)
+
+# Is the years vector a numeric? Is the years vector a character?
+```
+
+```{r}
+dog_food <- c(teddy = "purina", khora = "alpo", waffle = "fancy feast")
+
+dog_food
+
+dog_food[2]
+
+dog_food["khora"]
+```
