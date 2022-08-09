@@ -7,6 +7,10 @@ execute:
   message: false
 ---
 
+```{r}
+library(tidyverse)
+```
+
 ## Vectors
 
 ```{r}
@@ -36,7 +40,7 @@ typeof(years)
 
 ```{r}
 # Want to do a conditional check
-# is. <<< asks questions 'is this THIS"
+# is. <<< asks questions "is this THIS"
 # as. <<< gives a command "makes this THIS"
 
 is.numeric(years)
@@ -53,4 +57,108 @@ dog_food
 dog_food[2]
 
 dog_food["khora"]
+```
+
+```{r}
+cars <- c("blue", "orange", "white")
+cars[1]
+
+i <- 3
+cars[i]
+
+i <- seq(1:2)
+cars[i]
+```
+
+```{r}
+cars[3] <- "yellow"
+cars
+```
+
+## Matrices
+
+```{r}
+fish_size <- matrix(c(12, 14, 18, 20), ncol = 2, nrow = 2, byrow = FALSE)
+
+class(fish_size)
+typeof(fish_size)
+
+# Example indexing (row, column):
+fish_size[1,1]
+fish_size[2.1]
+
+# What happens if we create a matrix with different types of data?
+fish_type <- matrix(c(12, "trout", 18, 13L), ncol = 2, nrow = 2, byrow = FALSE)
+
+class(fish_type)
+typeof(fish_type)
+fish_type
+#changed to character
+
+# provides the row, and all of the columns in that row
+fish_size[2,]
+
+# provides the column, and all of the rows in that row
+fish_size[,1]
+```
+
+## Lists
+
+Reminder: A list combines vectors that can be of different length and type
+
+```{r}
+urchins <- list("blue", c(1,2,3), c("a cat", "a dog"), 5L)
+urchins
+
+ex_1 <- urchins[3]
+ex_2 <- urchins[[3]]
+```
+
+#### Make a named list
+
+```{r}
+tacos <- list(topping = c("onion", "cilantro", "guacamole"),
+              filling = c("beans", "meat", "veggies"),
+              price = c(6.75, 8.25, 9.50))
+
+tacos
+
+# Indexing list elements by name
+tacos$topping
+tacos$filling
+tacos$filling[2]
+tacos$price
+
+# In Rmarkdown: the second value of dogs is `r my_list$dogs[2]`
+```
+
+## Data frames
+
+```{r}
+# Example #1
+
+topping <- c("onion", "cilantro", "guacamole")
+filling <- c("beans", "meat", "veggies")
+price <- c(6.75, 8.25, 9.50)
+
+df_ex_1 <- data.frame(topping, filling, price)
+class(df_ex_1)
+
+# Example #2
+df_ex_2 <- data.frame(topping = c("sour cream", "salsa", "cheese"),
+                      filling = c("tofu", "mushroom", "cabbage"),
+                      price = c(12.50, 13.75, 15.00))
+
+# Example #3
+df_ex_3 <- tribble(
+  ~topping, ~filling, ~price,
+  "avocado", "tofu", 13.25,
+  "radish", "mushroom", 10.40,
+  "salsa", "veggies", 9.75)
+class(df_ex_3)
+
+df_ex_3
+
+df_ex_3$price
+df_ex_3$price[3]
 ```
